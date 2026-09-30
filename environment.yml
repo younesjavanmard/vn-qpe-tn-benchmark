@@ -1,0 +1,12 @@
+name: vn-qpe-tn
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - scipy
+  - networkx
+  - matplotlib
+  - pyscf
+  - jupyter
+  - pip

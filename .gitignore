@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.ipynb_checkpoints/
+notebooks/outputs/
+notebooks/*.executed.ipynb
+notebooks/nbexec.log
