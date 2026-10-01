@@ -30,7 +30,7 @@ src/qu_alg_qu_sim_tensor_networks/   core library (paper subset)
 scripts/
   vnqpe_tn.py          protocol-level functions: pointer MPO, coupled MPO of H (x) p, DMRG input,
                        TDVP evolution, pointer readout P(x;t), entropy, energy fit
-  make_figures.py      regenerates Figs. 4-7 and results/figure_numbers.json from data/
+  make_figures.py      regenerates Figs. 5-8 and results/figure_numbers.json from data/
   validate_tdvp.py     validation against exact state-vector evolution (paper Sec. III G)
 notebooks/
   vn_qpe_tn_benchmark_clean.ipynb   end-to-end walkthrough (Part A: paper figures from data;
@@ -58,7 +58,7 @@ or, in an existing environment with Python >= 3.9: `pip install -e .`
 ## Reproduce the paper figures and numbers
 ```bash
 cd scripts
-python make_figures.py      # Figs. 4-7 -> ../figures, energies -> ../results/figure_numbers.json (~1 min)
+python make_figures.py      # Figs. 5-8 -> ../figures, energies -> ../results/figure_numbers.json (~1 min)
 python validate_tdvp.py     # TDVP vs exact state-vector evolution (~5 min)
 ```
 Set `OMP_NUM_THREADS` / `OPENBLAS_NUM_THREADS` explicitly (e.g. to 1-4). The tensors in these
