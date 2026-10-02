@@ -33,6 +33,8 @@ scripts/
   make_figures.py      regenerates Figs. 5-8 and results/figure_numbers.json from data/
   validate_tdvp.py     validation against exact state-vector evolution (paper Sec. III G)
   make_coupled_mpo_graph.py  graph of the MPO of H (x) p for HeH+ + pointer (paper Fig. 4)
+  make_mpo_graphs_molecules.py  MPO graphs and bond dimensions of pyridine and BH3 (paper Appendix B, Fig. 11;
+                       needs openfermion and openfermionpyscf)
 notebooks/
   vn_qpe_tn_benchmark_clean.ipynb   end-to-end walkthrough (Part A: paper figures from data;
                                     Part B: validation; Part C: re-run of the 4x3 Heisenberg benchmark)
