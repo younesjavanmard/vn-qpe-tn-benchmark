@@ -1,4 +1,4 @@
-"""Graph of the MPO of H (x) p: molecular Hamiltonian (H2, STO-3G, Jordan-Wigner) followed by the pointer.
+"""Graph of the MPO of H (x) p: molecular Hamiltonian (HeH+, STO-3G, Jordan-Wigner) followed by the pointer.
 
 System part: left trie of Pauli prefixes (sites 0..m-1) and right trie of suffixes (sites m..N-1), joined at
 the cut m by coefficient edges c_k (as in Ref. [MPO-LCU], Fig. 4 of the paper). All suffixes end in one
@@ -12,9 +12,10 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
-# 15 Pauli strings of the H2/STO-3G Hamiltonian (Jordan-Wigner, 4 qubits); coefficients do not affect the graph
-TERMS = ["IIII", "ZIII", "IZII", "IIZI", "IIIZ", "ZZII", "ZIZI", "ZIIZ", "IZZI", "IZIZ", "IIZZ",
-         "XXYY", "XYYX", "YXXY", "YYXX"]
+# 27 Pauli strings of the HeH+ / STO-3G Hamiltonian (Jordan-Wigner, 4 qubits, R = 0.772 A), generated with
+# OpenFermion + PySCF; the coefficients do not affect the graph.
+TERMS = ["IIII", "IIIZ", "IIZI", "IIZZ", "IXIX", "IXZX", "IYIY", "IYZY", "IZII", "IZIZ", "IZZI", "XIXI", "XXYY",
+         "XYYX", "XZXI", "XZXZ", "YIYI", "YXXY", "YYXX", "YZYI", "YZYZ", "ZIII", "ZIIZ", "ZIZI", "ZXZX", "ZYZY", "ZZII"]
 N, m, r = 4, 2, 3
 COL = {"I": "0.55", "X": "red", "Y": "green", "Z": "blue", "c": "olive", "p": "purple"}
 
@@ -54,7 +55,7 @@ for j in range(1, r + 1):
 edges = list(dict.fromkeys(edges))
 used = {e[0] for e in edges} | {e[1] for e in edges}
 
-fig, ax = plt.subplots(figsize=(9.0, 4.2))
+fig, ax = plt.subplots(figsize=(9.0, 5.0))
 for u, v, lab in edges:
     (x1, y1), (x2, y2) = nodes[u], nodes[v]
     ax.annotate("", xy=(x2, y2), xytext=(x1, y1),
@@ -70,12 +71,12 @@ for k in used:
         face = "black"
     ax.plot(x, y, "o", ms=6, mfc=face, mec="0.2", mew=0.5, zorder=3)
 xt = nodes[term]
-ax.annotate(r"$\hat H$ complete" + "\n(bond dim. 1)", xy=xt, xytext=(xt[0] - 0.2, xt[1] - 2.6), fontsize=8, ha="center",
+ax.annotate(r"$\hat H$ complete" + "\n(bond dim. 1)", xy=xt, xytext=(xt[0] - 0.2, xt[1] - 3.4), fontsize=8, ha="center",
             arrowprops=dict(arrowstyle="-", color="0.3", lw=0.6))
 ymax = max(y for _, y in nodes.values()) + 0.9
 ax.axvspan(-0.4, N + 1.4, color="orange", alpha=0.06, lw=0)
 ax.axvspan(N + 1.4, x0 + r + 0.4, color="purple", alpha=0.06, lw=0)
-ax.text((N + 1) / 2, ymax, r"system: $\mathrm{H}_2$ (STO-3G), $N=4$ qubits", ha="center", fontsize=9)
+ax.text((N + 1) / 2, ymax, r"system: $\mathrm{HeH}^+$ (STO-3G), $N=4$ qubits", ha="center", fontsize=9)
 ax.text(x0 + (r + 1) / 2 - 0.3, ymax, rf"pointer: $r={r}$ qubits", ha="center", fontsize=9)
 handles = [Line2D([0], [0], color=COL[k], lw=2) for k in ("I", "X", "Y", "Z", "c", "p")]
 ax.legend(handles, [r"$\hat I$", r"$\hat X$", r"$\hat Y$", r"$\hat Z$", r"$c_k$", r"$\hat p_j$"], loc="lower left",
