@@ -1,0 +1,10 @@
+qiskit>=2.5
+pytket>=2.18
+pytket-qiskit>=0.78
+numpy
+matplotlib
+nbformat
+# optional, for untapered molecules (openfermion + pyscf) and scripts/export_tapered.py (tangelo)
+# openfermion
+# openfermionpyscf
+# tangelo-gc

@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=64", "wheel", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qu_alg_qu_sim_tensor_networks"
+dynamic = ["version"]
+description = "Tensor-network benchmarking of QPE in the von Neumann measurement formulation (paper code)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "Younes Javanmard"}]
+keywords = ["quantum", "tensor networks", "MPS", "MPO"]
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.10",
+  "networkx>=2.8",
+  "matplotlib>=3.6",
+  "pyscf>=2.3",
+]
+
+[tool.setuptools_scm]
+version_scheme = "no-guess-dev"
+local_scheme   = "node-and-date"
+# allows building from a copy without .git metadata (e.g. a Google Drive upload)
+fallback_version = "0.1.0"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["qu_alg_qu_sim_tensor_networks*"]
+
+[tool.setuptools]
+include-package-data = true
+package-dir = {"" = "src"}
+

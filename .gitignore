@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.ipynb_checkpoints/
+notebooks/outputs/
+notebooks/*.executed.ipynb
+notebooks/nbexec.log
+results/*.pkl
+results/*.log
+results/sampling_heisenberg.npz
+results/*_partial.npz
+results/heisenberg_*.npz
+results/heis_*.log
